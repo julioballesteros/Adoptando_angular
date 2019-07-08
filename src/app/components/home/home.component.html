@@ -19,7 +19,7 @@
     <img [src]="profileUrls[i] | async" class="card-img-top" [alt]="pet.name">
     <div class="card-body">
       <h5 class="card-title">{{ pet.name }}</h5>
-      <p class="card-text">{{ pet.description }}</p>
+      <p class="card-text">{{ (pet.description.length>80)? (pet.description | slice:0:80)+'...':(pet.description) }}</p>
       <p class="card-text"><small class="text-muted">Nacido en: {{ pet.birthdate }}</small></p>
 
       <button (click)="seePet(pet.id)" type="button" class="btn btn-outline-success btn-block">

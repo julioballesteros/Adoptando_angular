@@ -50,6 +50,7 @@ export class AddPetComponent implements OnInit {
 
     this.newPetForm.value['shelter'] = this.loggedUser.name;
 
+    
     this.petsService.addPet(this.newPetForm.value)
     .subscribe(
       (pet) => {
