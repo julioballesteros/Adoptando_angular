@@ -1,0 +1,67 @@
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="loginModalLabel">Inicia sesión como protectora</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+
+            <div class="form-group row">
+              <label class="col-2 col-form-label">Email</label>
+              <div class="col-8">
+
+                <input class="form-control"
+                       type="text"
+                       placeholder="Introduce tu e-mail"
+                       formControlName="mail">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-2 col-form-label">Contraseña</label>
+              <div class="col-8">
+
+                <input class="form-control"
+                       type="password"
+                       placeholder="Introduce tu contraseña"
+                       formControlName="password">
+              </div>
+            </div>
+
+            <div class="form-group row ml-2">
+              <div>
+                ¿No tienes una cuenta?
+                <a class="mr-2" [routerLink]="['/users','new']" data-dismiss="modal">Regístrate</a>
+
+              </div>
+              <button type="button" class="btn btn-secondary mr-1" data-dismiss="modal">Cerrar</button>
+              <button type="submit"
+                      class="btn btn-success"
+                      [disabled]="!loginForm.valid">
+                      Iniciar sesión
+              </button>
+            </div>
+
+        </form>
+
+      </div>
+      <!--
+      <div class="modal-footer">
+        <div>
+          ¿No tienes una cuenta?
+          <a class="mr-2" [routerLink]="['/user','new']" data-dismiss="modal">Regístrate</a>
+
+        </div>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-success" [routerLink]="['home']">Iniciar sesión</button>
+      </div>
+      -->
+    </div>
+  </div>
+</div>

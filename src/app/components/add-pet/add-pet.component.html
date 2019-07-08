@@ -1,0 +1,95 @@
+<div class="row">
+  <div class="col-md-8">
+    <h4>Añadir una nueva mascota</h4>
+  </div>
+  <div class="col-md-4">
+    <button type="button" class="btn btn-outline-danger" [routerLink]="['/home']">
+      <i class="fa fa-arrow-left"></i>
+      Volver
+    </button>
+  </div>
+</div>
+
+<hr>
+
+
+<form [formGroup]="newPetForm" (ngSubmit)="registerPet()">
+
+  <div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Escribe el nombre de la mascota"
+               formControlName="name">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Tipo de mascota</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Escribe el tipo de la mascota"
+               formControlName="type">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Fecha de nacimiento</label>
+    <div class="col-md-8">
+
+      <input class="form-control"
+             type="text"
+             placeholder="Cambiar"
+             formControlName="birthdate">
+    </div>
+  </div>
+  <!-- 
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Refugio</label>
+    <div class="col-md-8">
+
+      <input class="form-control"
+             type="text"
+             placeholder="Cambiar"
+             formControlName="shelter">
+    </div>
+  </div>
+  -->
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Descripción</label>
+    <div class="col-md-8">
+
+      <input class="form-control"
+             type="text"
+             placeholder="Cambiar"
+             formControlName="description">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="petImageFile">Imagen</label>
+    <input type="file"
+          class="form-control-file"
+          formControlName="image"
+          id="petImageFile"
+          (change)="onFileChange($event)">
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">
+      <button type="submit" class="btn btn-outline-success" [disabled]="!newPetForm.valid">
+        Registrar mascota
+      </button>
+    </div>
+  </div>
+
+</form>

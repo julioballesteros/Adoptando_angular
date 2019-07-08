@@ -1,0 +1,44 @@
+<div *ngIf="!cargando && !loadingUser">
+
+  <h1 class="animated fadeIn">{{pet.name | uppercase}} <small>{{pet.birthdate}}</small></h1>
+
+  <div class="row animated fadeIn fast">
+
+    <div class="col-md-4">
+
+      <img [src]="profileUrl | async" class="img-fluid" [alt]="pet.name">
+      <br><br>
+      <a [routerLink]="['/home']" class="btn btn-outline-danger btn-block">
+        <i class="fa fa-arrow-left"></i>
+        Volver
+      </a>
+
+    </div>
+
+    <div class="col-md-8">
+
+      <h3>{{ pet.name }}</h3>
+      <hr>
+      <p>
+          {{ pet.description }}
+      </p>
+
+      <button *ngIf="pet.shelter == loggedUser.name" (click) = "deletePet(pet.id)"  type="button" class="btn btn-danger">
+          Eliminar mascota
+      </button>
+
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="cargando"
+     class="alert alert-info text-center mt-3 animated fadeIn faster">
+  <h4 class="alert-heading">Cargando</h4>
+  <p>
+    <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+  </p>
+  <p class="mb-0">
+    Espere por favor
+  </p>
+</div>

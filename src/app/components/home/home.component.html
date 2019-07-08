@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-8">
+    <h1 class="animated fadeIn fast">Mascotas para adoptar</h1>
+  </div>
+  <div *ngIf="loggedUser != null" class="col-md-4">
+    <button type="button" class="btn btn-success" [routerLink]="['/pets','new']">
+      <i class="fa fa-plus"></i>
+        Añadir mascota
+    </button>
+  </div>
+
+</div>
+
+<hr>
+
+<div class="card-columns animated fadeIn" *ngIf="!cargando && pets.length > 0">
+
+  <div class="card" *ngFor="let pet of pets; let i = index">
+    <img [src]="profileUrls[i] | async" class="card-img-top" [alt]="pet.name">
+    <div class="card-body">
+      <h5 class="card-title">{{ pet.name }}</h5>
+      <p class="card-text">{{ pet.description }}</p>
+      <p class="card-text"><small class="text-muted">Nacido en: {{ pet.birthdate }}</small></p>
+
+      <button (click)="seePet(pet.id)" type="button" class="btn btn-outline-success btn-block">
+          Ver mascota
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!cargando && pets.length === 0"
+     class="alert alert-warning text-center mt-3 animated fadeIn faster">
+    <h4 class="alert-heading">No se ha encontrado ninguna mascota</h4>
+    <p>
+      <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+</div>
+
+<div *ngIf="cargando"
+     class="alert alert-info text-center mt-3 animated fadeIn faster">
+  <h4 class="alert-heading">Cargando</h4>
+  <p>
+    <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+  </p>
+  <p class="mb-0">
+    Espere por favor
+  </p>
+</div>
