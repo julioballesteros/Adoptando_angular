@@ -1,4 +1,4 @@
-<div *ngIf="!cargando && !loadingUser">
+<div *ngIf="!cargando">
 
   <h1 class="animated fadeIn">{{pet.name | uppercase}} <small>{{pet.birthdate}}</small></h1>
 
@@ -23,7 +23,7 @@
           {{ pet.description }}
       </p>
 
-      <button *ngIf="pet.shelter == loggedUser.name" (click) = "deletePet(pet.id)"  type="button" class="btn btn-danger">
+      <button *ngIf="loggedUser != null && !loadingUser  && pet.shelter == loggedUser.name" (click) = "deletePet(pet.id)"  type="button" class="btn btn-danger">
           Eliminar mascota
       </button>
 
